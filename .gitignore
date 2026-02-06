@@ -1,0 +1,100 @@
+#-------------------------
+# Operating Specific Junk Files
+#-------------------------
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+#-------------------------
+# Environment Files
+#-------------------------
+# These should never be under version control,
+# as it poses a security risk.
+
+.env
+.env.*
+app/Config/App.php
+
+#-------------------------
+# Temporary / Writable Files
+#-------------------------
+writable/logs/
+writable/session/
+writable/debugbar/
+writable/cache/
+writable/uploads/
+writable/temp/
+
+#-------------------------
+# User Guide Temp Files
+#-------------------------
+user_guide_src/build/*
+user_guide_src/cilexer/build/*
+user_guide_src/cilexer/dist/*
+user_guide_src/cilexer/pycilexer.egg-info/*
+
+#-------------------------
+# Test Files
+#-------------------------
+tests/coverage*
+phpunit
+/results/
+/phpunit*.xml
+
+#-------------------------
+# Composer
+#-------------------------
+vendor/
+composer.lock
+
+#-------------------------
+# IDE / Development Files
+#-------------------------
+_modules/*
+.php-version
+.idea/
+*.iml
+/nbproject/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+/nbactions.xml
+/nb-configuration.xml
+/.nb-gradle/
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+.phpintel
+/api/
+
+# Visual Studio Code
+.vscode/
+
+/results/
+/phpunit*.xml
+
+# Ignorar archivos de entorno
+app/Config/App.php
+.env
+.env.*
+env
+envBK
+
+# Ignorar logs y sesiones
+writable/*
+!writable/.htaccess
+writable/logs/
+writable/session/
+writable/debugbar/
+public/error_log
+public/info.php
+.gitignore copy.htaccess
+public/upload/*
