@@ -22,42 +22,6 @@ class Permisos extends BaseConfig
             'registrar_transferencia',
         ],
 
-        'Paquetería' => [
-            'crear_paquetes',
-            'ver_paquetes',
-            'ver_tracking',
-            'crear_tracking',
-        ],
-
-        'Remuneraciones' => [
-            'remunerar_paquetes',
-            'devolver_paquetes',
-            'remunerar_paquetes_por_cuenta',
-        ],
-
-        'Vendedores' => [
-            'ver_vendedores',
-            'crear_vendedor',
-            'editar_vendedor',
-            'eliminar_vendedor',
-        ],
-
-        'Puntos fijos y rutas' => [
-            'ver_puntosfijos',
-            'crear_puntofijo',
-            'editar_puntofijo',
-            'eliminar_puntofijo',
-            'ver_rutas',
-            'crear_ruta',
-            'editar_ruta',
-            'eliminar_ruta',
-        ],
-
-        'Solicitudes' => [
-            'invalidar_pago',
-            'invalidar_flete',
-        ],
-
         'Reportes' => [
             'ver_reportes',
         ],

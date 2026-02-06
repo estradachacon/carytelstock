@@ -7,7 +7,7 @@ use CodeIgniter\Config\BaseConfig;
 class Email extends BaseConfig
 {
     public string $fromEmail  = 'fcencomiendasnet@gmail.com';
-    public $fromName  = 'FC Encomiendas';
+    public $fromName  = 'CARYTEL ERP';
     public string $recipients = '';
     public string $userAgent = 'CodeIgniter';
     public $protocol  = 'smtp';

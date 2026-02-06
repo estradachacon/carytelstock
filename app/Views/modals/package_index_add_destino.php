@@ -6,14 +6,9 @@
                 <h5 class="modal-title">Agregar destino al paquete #<?= $pkg['id'] ?></h5>
                 <button class="close" data-dismiss="modal"><span>&times;</span></button>
             </div>
-
             <form method="post" action="<?= base_url('packages-setDestino') ?>">
-                <?= csrf_field() ?>
-
                 <div class="modal-body">
-
                     <input type="hidden" name="id" value="<?= $pkg['id'] ?>">
-
                     <label class="form-label">Tipo de destino</label>
                     <select name="tipo_destino" class="form-control selDestino" data-id="<?= $pkg['id'] ?>">
                         <option value="">Seleccione...</option>

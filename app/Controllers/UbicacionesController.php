@@ -9,10 +9,6 @@ use App\Models\MunicipioModel;
 
 class UbicacionesController extends BaseController
 {
-    /**
-     * 🔍 Select2 - Buscar colonias
-     * Retorna: colonia – municipio, departamento
-     */
     public function searchColonias()
     {
         if (!$this->request->isAJAX()) {
