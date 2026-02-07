@@ -1,4 +1,74 @@
 <div id="layoutSidenav_nav">
+    <style>
+        /* ===== SIDEBAR HOVER EFFECTS ===== */
+
+.sb-sidenav .nav-link {
+    position: relative;
+    border-radius: 6px;
+    margin: 2px 6px;
+    transition: 
+        background-color 0.25s ease,
+        color 0.25s ease,
+        transform 0.15s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Hover general */
+.sb-sidenav .nav-link:hover {
+    background: linear-gradient(
+        90deg,
+        rgba(29, 39, 68, 0.12),
+        rgba(29, 39, 68, 0.04)
+    );
+    color: <?= setting('primary_color') ?? '#1d2744' ?>;
+    transform: translateX(4px);
+    box-shadow: inset 4px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
+}
+
+/* Íconos reaccionan */
+.sb-sidenav .nav-link:hover .sb-nav-link-icon i {
+    transform: scale(1.1);
+    color: <?= setting('primary_color') ?? '#1d2744' ?>;
+}
+
+/* Transición de iconos */
+.sb-nav-link-icon i {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* Submenú (nested) hover */
+.sb-sidenav-menu-nested .nav-link {
+    padding-left: 2.4rem;
+    font-size: 0.92rem;
+}
+
+.sb-sidenav-menu-nested .nav-link:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+    transform: translateX(6px);
+    box-shadow: inset 3px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
+}
+
+/* Link activo */
+.sb-sidenav .nav-link.active {
+    background: <?= setting('primary_color') ?? '#1d2744' ?>;
+    color: #fff !important;
+    box-shadow: inset 4px 0 0 rgba(255,255,255,0.35);
+}
+
+.sb-sidenav .nav-link.active .sb-nav-link-icon i {
+    color: #fff;
+}
+
+/* Flecha del collapse */
+.sb-sidenav-collapse-arrow i {
+    transition: transform 0.25s ease;
+}
+
+a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
+    transform: rotate(180deg);
+}
+
+    </style>
     <span class="close-mobile-nav"><i class="fa-solid fa-close"></i></span>
     <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
 
@@ -49,6 +119,74 @@
                     <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
                     Inicio
                 </a>
+
+                <?php if (
+                    tienePermiso('ver_facturas') ||
+                    tienePermiso('crear_venta')
+                ): ?>
+
+                    <a class="nav-link collapsed" href="#"
+                        data-toggle="collapse"
+                        data-target="#sellings"
+                        aria-expanded="false"
+                        aria-controls="sellings">
+                        <div class="sb-nav-link-icon">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </div>
+                        Ventas
+                        <div class="sb-sidenav-collapse-arrow">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </a>
+
+                    <div class="collapse" id="sellings" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+
+                            <?php if (tienePermiso('ver_facturas')): ?>
+                                <a class="nav-link" href="/invoices">Facturas historicas</a>
+                            <?php endif; ?>
+
+                            <?php if (tienePermiso('crear_facturas')): ?>
+                                <a class="nav-link" href="/invoices/new">Crear venta</a>
+                            <?php endif; ?>
+
+                        </nav>
+                    </div>
+                <?php endif; ?>
+
+                <?php if (
+                    tienePermiso('ver_productos') ||
+                    tienePermiso('Inventario_movimientos')
+                ): ?>
+
+                    <a class="nav-link collapsed" href="#"
+                        data-toggle="collapse"
+                        data-target="#inventario"
+                        aria-expanded="false"
+                        aria-controls="inventario">
+                        <div class="sb-nav-link-icon">
+                            <i class="fa-solid fa-warehouse"></i>
+                        </div>
+                        Inventario
+                        <div class="sb-sidenav-collapse-arrow">
+                            <i class="fa-solid fa-angle-down"></i>
+                        </div>
+                    </a>
+
+                    <div class="collapse" id="inventario" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+
+                            <?php if (tienePermiso('ver_facturas')): ?>
+                                <a class="nav-link" href="/invoices">Productos</a>
+                            <?php endif; ?>
+
+                            <?php if (tienePermiso('crear_facturas')): ?>
+                                <a class="nav-link" href="/invoices/new">Movimientos de inventario</a>
+                            <?php endif; ?>
+
+                        </nav>
+                    </div>
+                <?php endif; ?>
 
                 <?php if (
                     tienePermiso('ver_transacciones') ||
@@ -107,98 +245,6 @@
                                 <a class="nav-link" href="/accounts">Cuentas</a>
                             <?php endif; ?>
 
-                        </nav>
-                    </div>
-
-                <?php endif; ?>
-
-                <?php if (
-                    tienePermiso('crear_paquetes') ||
-                    tienePermiso('ver_paquetes') ||
-                    tienePermiso('ver_tracking')
-                ): ?>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#sales" aria-expanded="false"
-                        aria-controls="sales">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-box-open"></i></div>
-                        Paquetería
-                        <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
-                    </a>
-
-                    <div class="collapse" id="sales" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-
-                            <?php if (tienePermiso('crear_paquetes')): ?>
-                                <a class="nav-link" href="/packages/new">Registrar paquete</a>
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('ver_paquetes')): ?>
-                                <a class="nav-link" href="/packages">Lista de paquetes</a>
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('ver_tracking')): ?>
-                                <a class="nav-link" href="/tracking">Seguimiento de paquetes</a>
-                            <?php endif; ?>
-
-                        </nav>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (
-                    tienePermiso('remunerar_paquetes') ||
-                    tienePermiso('devolver_paquetes') ||
-                    tienePermiso('remunerar_paquetes_por_cuenta')
-                ): ?>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#treasury"
-                        aria-expanded="false" aria-controls="treasury">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
-                        Remuneraciones
-                        <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="treasury" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav" id="navAccordionTreasury">
-                            <?php if (tienePermiso('remunerar_paquetes')): ?>
-                                <a class="nav-link" href="/remu/create">Remunerar paquetes</a>
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('remunerar_paquetes_por_cuenta')): ?>
-                                <a class="nav-link" href="/remuaccount/create">Remunerar paquetes por cuenta</a>
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('devolver_paquetes')): ?>
-                                <a class="nav-link" href="/packages/return">Devolución de paquetes</a>
-                            <?php endif; ?>
-                        </nav>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (
-                    tienePermiso('ver_vendedores')
-                ): ?>
-                    <a class="nav-link" href="/sellers">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-address-book"></i></div>
-                        Vendedores
-                    </a>
-                <?php endif; ?>
-
-                <?php if (
-                    tienePermiso('ver_puntosfijos') ||
-                    tienePermiso('ver_rutas')
-                ): ?>
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#settledpoint"
-                        aria-expanded="false" aria-controls="settledpoint">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-map-marker-alt"></i></div>
-                        Puntos fijos y Rutas
-                        <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
-                    </a>
-                    <div class="collapse" id="settledpoint" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-                            <?php if (tienePermiso('ver_puntosfijos')): ?>
-                                <a class="nav-link" href="/settledpoint">Puntos fijos</a>
-                            <?php endif; ?>
-                            <?php if (tienePermiso('ver_rutas')): ?>
-                                <a class="nav-link" href="/routes">Rutas</a>
-                            <?php endif; ?>
                         </nav>
                     </div>
                 <?php endif; ?>

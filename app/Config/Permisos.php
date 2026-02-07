@@ -22,6 +22,16 @@ class Permisos extends BaseConfig
             'registrar_transferencia',
         ],
 
+        'Ventas' => [
+            'ver_facturas',
+            'crear_facturas',
+        ],
+
+        'Inventario' => [
+            'ver_productos',
+            'Inventario_movimientos',
+        ],
+
         'Reportes' => [
             'ver_reportes',
         ],
