@@ -2,72 +2,69 @@
     <style>
         /* ===== SIDEBAR HOVER EFFECTS ===== */
 
-.sb-sidenav .nav-link {
-    position: relative;
-    border-radius: 6px;
-    margin: 2px 6px;
-    transition: 
-        background-color 0.25s ease,
-        color 0.25s ease,
-        transform 0.15s ease,
-        box-shadow 0.25s ease;
-}
+        .sb-sidenav .nav-link {
+            position: relative;
+            border-radius: 6px;
+            margin: 2px 6px;
+            transition:
+                background-color 0.25s ease,
+                color 0.25s ease,
+                transform 0.15s ease,
+                box-shadow 0.25s ease;
+        }
 
-/* Hover general */
-.sb-sidenav .nav-link:hover {
-    background: linear-gradient(
-        90deg,
-        rgba(29, 39, 68, 0.12),
-        rgba(29, 39, 68, 0.04)
-    );
-    color: <?= setting('primary_color') ?? '#1d2744' ?>;
-    transform: translateX(4px);
-    box-shadow: inset 4px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
-}
+        /* Hover general */
+        .sb-sidenav .nav-link:hover {
+            background: linear-gradient(90deg,
+                    rgba(29, 39, 68, 0.12),
+                    rgba(29, 39, 68, 0.04));
+            color: <?= setting('primary_color') ?? '#1d2744' ?>;
+            transform: translateX(4px);
+            box-shadow: inset 4px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
+        }
 
-/* Íconos reaccionan */
-.sb-sidenav .nav-link:hover .sb-nav-link-icon i {
-    transform: scale(1.1);
-    color: <?= setting('primary_color') ?? '#1d2744' ?>;
-}
+        /* Íconos reaccionan */
+        .sb-sidenav .nav-link:hover .sb-nav-link-icon i {
+            transform: scale(1.1);
+            color: <?= setting('primary_color') ?? '#1d2744' ?>;
+        }
 
-/* Transición de iconos */
-.sb-nav-link-icon i {
-    transition: transform 0.2s ease, color 0.2s ease;
-}
+        /* Transición de iconos */
+        .sb-nav-link-icon i {
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
 
-/* Submenú (nested) hover */
-.sb-sidenav-menu-nested .nav-link {
-    padding-left: 2.4rem;
-    font-size: 0.92rem;
-}
+        /* Submenú (nested) hover */
+        .sb-sidenav-menu-nested .nav-link {
+            padding-left: 2.4rem;
+            font-size: 0.92rem;
+        }
 
-.sb-sidenav-menu-nested .nav-link:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-    transform: translateX(6px);
-    box-shadow: inset 3px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
-}
+        .sb-sidenav-menu-nested .nav-link:hover {
+            background-color: rgba(0, 0, 0, 0.04);
+            transform: translateX(6px);
+            box-shadow: inset 3px 0 0 <?= setting('primary_color') ?? '#1d2744' ?>;
+        }
 
-/* Link activo */
-.sb-sidenav .nav-link.active {
-    background: <?= setting('primary_color') ?? '#1d2744' ?>;
-    color: #fff !important;
-    box-shadow: inset 4px 0 0 rgba(255,255,255,0.35);
-}
+        /* Link activo */
+        .sb-sidenav .nav-link.active {
+            background: <?= setting('primary_color') ?? '#1d2744' ?>;
+            color: #fff !important;
+            box-shadow: inset 4px 0 0 rgba(255, 255, 255, 0.35);
+        }
 
-.sb-sidenav .nav-link.active .sb-nav-link-icon i {
-    color: #fff;
-}
+        .sb-sidenav .nav-link.active .sb-nav-link-icon i {
+            color: #fff;
+        }
 
-/* Flecha del collapse */
-.sb-sidenav-collapse-arrow i {
-    transition: transform 0.25s ease;
-}
+        /* Flecha del collapse */
+        .sb-sidenav-collapse-arrow i {
+            transition: transform 0.25s ease;
+        }
 
-a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
-    transform: rotate(180deg);
-}
-
+        a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
+            transform: rotate(180deg);
+        }
     </style>
     <span class="close-mobile-nav"><i class="fa-solid fa-close"></i></span>
     <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
@@ -195,14 +192,14 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
                     tienePermiso('ver_cuentas')
                 ): ?>
 
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cash" aria-expanded="false"
-                        aria-controls="cash">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accounting" aria-expanded="false"
+                        aria-controls="accounting">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
                         Contabilidad
                         <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
                     </a>
 
-                    <div class="collapse" id="cash" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="accounting" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
 
                             <!-- SUBMENÚ CAJAS -->
@@ -214,7 +211,340 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
 
                                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
                                     aria-expanded="false" aria-controls="subCajas">
-                                    Cajas
+                                    Partidas
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Ingreso de partidas</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Corrección de partidas</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Impresión de partidas</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Listado de verificación</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Zoom transacciones</a>
+                                        <?php endif; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+
+                            <!-- SUBMENÚ CAJAS -->
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Consultas
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Consulta de transacciones</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Browse Diario mayor auxiliar</a>
+                                        <?php endif; ?>
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <ns class="nav-link" href="/cashier/transactions">Transacciones historicas</a>
+                                            <?php endif; ?>
+                                            <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                                <a class="nav-link" href="/cashier/transactions">Browse Saldos Acumulados</a>
+                                            <?php endif; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+
+                            <!-- SUBMENÚ CAJAS -->
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Informes financieros
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Balance de comprobación</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Diario General</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Diario Mayor</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Diario Mayor Aux</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Caja D. Mayor</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Balance General</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Est. de resultados</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Est. Resultados x Per</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Est. Resultados /Men</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Est. Result /año</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Est. Resultados 6 meses</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Anexos</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Partidas Historicas</a>
+                                        <?php endif; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Listados
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Listado de relacion</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Listado de costos y gastos 6 meses</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Listado comparativo de cuentas</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Listado de catalogo</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Reporte diario mayor auxiliar 323B</a>
+                                        <?php endif; ?>
+
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Proceso de cierre
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Listado de control</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Cierre de mes</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Cierre anual</a>
+                                        <?php endif; ?>
+
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Mantenimientos
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Catalogo de cuentas</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Catalogo multiformato</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Tipos de asientos contables</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Acumulados saldos actuales</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Acumulados saldos anteriores</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Transacciones historicas</a>
+                                        <?php endif; ?>
+
+                                        <?php if (
+                                            tienePermiso('ver_cajas') ||
+                                            tienePermiso('ver_historicos_de_caja') ||
+                                            tienePermiso('crear_caja')
+                                        ): ?>
+
+                                            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                                aria-expanded="false" aria-controls="subCajas">
+                                                Configuracion general
+                                                <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                            </a>
+
+                                            <div class="collapse" id="subCajas" data-parent="#cash">
+                                                <nav class="sb-sidenav-menu-nested nav">
+                                                    <?php if (tienePermiso('ver_cajas')): ?>
+                                                        <a class="nav-link" href="/cashiers">Configuracion general</a>
+                                                    <?php endif; ?>
+
+                                                    <?php if (tienePermiso('crear_caja')): ?>
+                                                        <a class="nav-link" href="/cashiers/new">Cuentas de balance</a>
+                                                    <?php endif; ?>
+
+                                                    <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                                        <a class="nav-link" href="/cashier/transactions">Cuentas de resultado operativo</a>
+                                                    <?php endif; ?>
+
+                                                    <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                                        <a class="nav-link" href="/cashier/transactions">Archivo de firmas</a>
+                                                    <?php endif; ?>
+
+                                                    <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                                        <a class="nav-link" href="/cashier/transactions">Relacion de costos gastos e ingresos</a>
+                                                    <?php endif; ?>
+
+                                                    <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                                        <a class="nav-link" href="/cashier/transactions">Fechas de periodo</a>
+                                                    <?php endif; ?>
+                                                </nav>
+                                            </div>
+                                        <?php endif; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Utilitarios
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                                </a>
+
+                                <div class="collapse" id="subCajas" data-parent="#cash">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <?php if (tienePermiso('ver_cajas')): ?>
+                                            <a class="nav-link" href="/cashiers">Multiformatos</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('crear_caja')): ?>
+                                            <a class="nav-link" href="/cashiers/new">Generar catalogo</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Zoom transacciones corrientes</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Cambio de codigo de catalogo</a>
+                                        <?php endif; ?>
+                                    </nav>
+                                </div>
+                            <?php endif; ?>
+                        </nav>
+                    </div>
+                <?php endif; ?>
+                <?php if (
+                    tienePermiso('ver_transacciones') ||
+                    tienePermiso('ver_cajas') ||
+                    tienePermiso('crear_caja') ||
+                    tienePermiso('ver_cuentas')
+                ): ?>
+
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cxc" aria-expanded="false"
+                        aria-controls="cxc">
+                        <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
+                        Cuentas por cobrar
+                        <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
+                    </a>
+
+                    <div class="collapse" id="cxc" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                        <nav class="sb-sidenav-menu-nested nav">
+
+                            <!-- SUBMENÚ CAJAS -->
+                            <?php if (
+                                tienePermiso('ver_cajas') ||
+                                tienePermiso('ver_historicos_de_caja') ||
+                                tienePermiso('crear_caja')
+                            ): ?>
+
+                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
+                                    aria-expanded="false" aria-controls="subCajas">
+                                    Movimientos diarios
                                     <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
                                 </a>
 
@@ -222,15 +552,19 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
                                     <nav class="sb-sidenav-menu-nested nav">
 
                                         <?php if (tienePermiso('ver_cajas')): ?>
-                                            <a class="nav-link" href="/cashiers">Lista de Cajas</a>
+                                            <a class="nav-link" href="/cashiers">Ingreso de pagos</a>
                                         <?php endif; ?>
 
                                         <?php if (tienePermiso('crear_caja')): ?>
-                                            <a class="nav-link" href="/cashiers/new">Creación de caja</a>
+                                            <a class="nav-link" href="/cashiers/new">Ingreso de Notas de crédito / Anulación browse</a>
                                         <?php endif; ?>
 
                                         <?php if (tienePermiso('ver_historicos_de_caja')): ?>
-                                            <a class="nav-link" href="/cashier/transactions">Movimientos de caja</a>
+                                            <a class="nav-link" href="/cashier/transactions">Ingreso de CCF/FAC</a>
+                                        <?php endif; ?>
+
+                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
+                                            <a class="nav-link" href="/cashier/transactions">Cierre Diario / Actualización</a>
                                         <?php endif; ?>
                                     </nav>
                                 </div>
@@ -248,21 +582,22 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
                         </nav>
                     </div>
                 <?php endif; ?>
-<?php if (
+
+                <?php if (
                     tienePermiso('ver_transacciones') ||
                     tienePermiso('ver_cajas') ||
                     tienePermiso('crear_caja') ||
                     tienePermiso('ver_cuentas')
                 ): ?>
 
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cash" aria-expanded="false"
-                        aria-controls="cash">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cxp" aria-expanded="false"
+                        aria-controls="cxp">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
-                        Cuentas por cobrar
+                        Cuentas por pagar
                         <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
                     </a>
 
-                    <div class="collapse" id="cash" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="cxp" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
 
                             <!-- SUBMENÚ CAJAS -->
@@ -316,75 +651,14 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
                     tienePermiso('ver_cuentas')
                 ): ?>
 
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cash" aria-expanded="false"
-                        aria-controls="cash">
-                        <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
-                        Cuentas por pagar
-                        <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
-                    </a>
-
-                    <div class="collapse" id="cash" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
-                        <nav class="sb-sidenav-menu-nested nav">
-
-                            <!-- SUBMENÚ CAJAS -->
-                            <?php if (
-                                tienePermiso('ver_cajas') ||
-                                tienePermiso('ver_historicos_de_caja') ||
-                                tienePermiso('crear_caja')
-                            ): ?>
-
-                                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#subCajas"
-                                    aria-expanded="false" aria-controls="subCajas">
-                                    Cajas
-                                    <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
-                                </a>
-
-                                <div class="collapse" id="subCajas" data-parent="#cash">
-                                    <nav class="sb-sidenav-menu-nested nav">
-
-                                        <?php if (tienePermiso('ver_cajas')): ?>
-                                            <a class="nav-link" href="/cashiers">Lista de Cajas</a>
-                                        <?php endif; ?>
-
-                                        <?php if (tienePermiso('crear_caja')): ?>
-                                            <a class="nav-link" href="/cashiers/new">Creación de caja</a>
-                                        <?php endif; ?>
-
-                                        <?php if (tienePermiso('ver_historicos_de_caja')): ?>
-                                            <a class="nav-link" href="/cashier/transactions">Movimientos de caja</a>
-                                        <?php endif; ?>
-                                    </nav>
-                                </div>
-
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('ver_transacciones')): ?>
-                                <a class="nav-link" href="/transactions">Movimientos históricos</a>
-                            <?php endif; ?>
-
-                            <?php if (tienePermiso('ver_cuentas')): ?>
-                                <a class="nav-link" href="/accounts">Cuentas</a>
-                            <?php endif; ?>
-
-                        </nav>
-                    </div>
-                <?php endif; ?>
-
-<?php if (
-                    tienePermiso('ver_transacciones') ||
-                    tienePermiso('ver_cajas') ||
-                    tienePermiso('crear_caja') ||
-                    tienePermiso('ver_cuentas')
-                ): ?>
-
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cash" aria-expanded="false"
-                        aria-controls="cash">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#retaceos" aria-expanded="false"
+                        aria-controls="retaceos">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
                         Retaceos
                         <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
                     </a>
 
-                    <div class="collapse" id="cash" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="retaceos" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
 
                             <!-- SUBMENÚ CAJAS -->
@@ -431,21 +705,21 @@ a.nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow i {
                     </div>
                 <?php endif; ?>
 
-<?php if (
+                <?php if (
                     tienePermiso('ver_transacciones') ||
                     tienePermiso('ver_cajas') ||
                     tienePermiso('crear_caja') ||
                     tienePermiso('ver_cuentas')
                 ): ?>
 
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#cash" aria-expanded="false"
-                        aria-controls="cash">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#libros" aria-expanded="false"
+                        aria-controls="libros">
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-wallet"></i></div>
                         Libros del IVA
                         <div class="sb-sidenav-collapse-arrow"><i class="fa-solid fa-angle-down"></i></div>
                     </a>
 
-                    <div class="collapse" id="cash" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
+                    <div class="collapse" id="libros" aria-labelledby="headingOne" data-parent="#sidenavAccordion">
                         <nav class="sb-sidenav-menu-nested nav">
 
                             <!-- SUBMENÚ CAJAS -->

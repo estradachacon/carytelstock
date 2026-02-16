@@ -160,10 +160,8 @@
                     <?= esc(setting('company_name') ?? 'Sistema') ?>
                 </a>
                 <button class="btn btn-link btn-sm text-white" id="sidebarToggle">
-                    <div class="lines">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                    <div>
+                        <i class="fa-brands fa-buffer badge-text-lg"></i>
                     </div>
                 </button>
             </div>
